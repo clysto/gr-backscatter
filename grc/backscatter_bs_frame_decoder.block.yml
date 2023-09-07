@@ -1,0 +1,35 @@
+id: backscatter_bs_frame_decoder
+label: Backscatter Frame Decoder
+category: '[Backscatter]'
+flags: [ python, cpp ]
+
+templates:
+  imports: from gnuradio import backscatter
+  make: backscatter.bs_frame_decoder(${threshoud}, ${max_pdu_len})
+
+cpp_templates:
+  includes: ['#include <gnuradio/backscatter/bs_frame_decoder.h>']
+  declarations: 'backscatter::bs_frame_decoder::sptr ${id};'
+  make: 'this->${id} = backscatter::bs_frame_decoder::make(${threshoud}, ${max_pdu_len});'
+
+parameters: 
+- id: threshoud
+  label: Correlate Threshoud
+  dtype: int
+  default: "0"
+- id: max_pdu_len
+  label: Max PDU Length
+  dtype: int
+  default: "1500"
+
+inputs:
+- label: in
+  domain: stream
+  dtype: float
+
+outputs:
+  - domain: message
+    id: pdus
+    optional: true
+
+file_format: 1

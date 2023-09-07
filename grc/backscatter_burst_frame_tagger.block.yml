@@ -1,0 +1,42 @@
+id: backscatter_burst_frame_tagger
+label: Burst Frame Tagger
+category: "[Backscatter]"
+flags: [ python, cpp ]
+
+
+templates:
+  imports: from gnuradio import backscatter
+  make: backscatter.burst_frame_tagger(${snr_threshoud}, ${look_ahead})
+
+
+cpp_templates:
+  includes: ['#include <gnuradio/backscatter/burst_frame_tagger.h>']
+  declarations: 'backscatter::burst_frame_tagger::sptr ${id};'
+  make: 'this->${id} = backscatter::burst_frame_tagger::make(${snr_threshoud}, ${look_ahead});'
+
+parameters:
+  - id: snr_threshoud
+    label: SNR Threshoud
+    dtype: float
+  - id: look_ahead
+    label: Look Ahead
+    dtype: int
+inputs:
+  - label: sig
+    domain: stream
+    dtype: float
+
+  - label: snr
+    domain: stream
+    dtype: float
+
+  - label: power
+    domain: stream
+    dtype: float
+
+outputs:
+  - label: out
+    domain: stream
+    dtype: float
+
+file_format: 1
