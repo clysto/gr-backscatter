@@ -1,0 +1,29 @@
+id: backscatter_gate
+label: Gate
+category: '[Backscatter]'
+flags: [python]
+
+templates:
+  imports: from gnuradio import backscatter
+  make: backscatter.gate(${max_samples})
+
+parameters:
+  - id: max_samples
+    label: Max Samples
+    dtype: int
+    default: '10000'
+
+inputs:
+  - label: in
+    domain: stream
+    dtype: float
+  - domain: message
+    id: close
+    optional: true
+
+outputs:
+  - label: out
+    domain: stream
+    dtype: float
+
+file_format: 1

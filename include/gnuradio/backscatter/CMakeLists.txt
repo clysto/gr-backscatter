@@ -13,6 +13,7 @@ install(FILES
     api.h
     power_detector.h
     burst_frame_tagger.h
-    burst_frame_scaler.h
-    bs_frame_decoder.h DESTINATION include/gnuradio/backscatter
+    bs_frame_decoder.h
+    gate.h
+    pdu_ber.h DESTINATION include/gnuradio/backscatter
 )

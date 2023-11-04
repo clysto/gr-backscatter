@@ -1,5 +1,7 @@
 *~
 *.pyc
 *.pyo
-build*/
+*build*/
 .cache
+.vscode
+.idea

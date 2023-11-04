@@ -1,7 +1,7 @@
 id: backscatter_power_detector
 label: Power Detector
-category: "[Backscatter]"
-flags: [ python, cpp ]
+category: '[Backscatter]'
+flags: [python, cpp]
 
 templates:
   imports: from gnuradio import backscatter
@@ -16,7 +16,7 @@ parameters:
   - id: window_size
     label: Window Size
     dtype: int
-    default: "500"
+    default: '500'
 
 #  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
 #  Keys include:

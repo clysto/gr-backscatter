@@ -10,12 +10,12 @@
 # Setup library
 ########################################################################
 include(GrPlatform) #define LIB_SUFFIX
-
 list(APPEND backscatter_sources
     power_detector_impl.cc
     burst_frame_tagger_impl.cc
-    burst_frame_scaler_impl.cc
     bs_frame_decoder_impl.cc
+    gate_impl.cc
+    pdu_ber_impl.cc
 )
 
 set(backscatter_sources "${backscatter_sources}" PARENT_SCOPE)
@@ -25,7 +25,7 @@ if(NOT backscatter_sources)
 endif(NOT backscatter_sources)
 
 add_library(gnuradio-backscatter SHARED ${backscatter_sources})
-target_link_libraries(gnuradio-backscatter gnuradio::gnuradio-runtime gnuradio-blocks)
+target_link_libraries(gnuradio-backscatter gnuradio::gnuradio-runtime gnuradio-blocks gnuradio-digital)
 target_include_directories(gnuradio-backscatter
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
     PUBLIC $<INSTALL_INTERFACE:include>

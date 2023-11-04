@@ -13,8 +13,8 @@
 /* If manual edits are made, the following tags should be modified accordingly.    */
 /* BINDTOOL_GEN_AUTOMATIC(0)                                                       */
 /* BINDTOOL_USE_PYGCCXML(0)                                                        */
-/* BINDTOOL_HEADER_FILE(burst_frame_scaler.h)                                        */
-/* BINDTOOL_HEADER_FILE_HASH(6b1e64b12607c457b9dff12db25f56a4)                     */
+/* BINDTOOL_HEADER_FILE(pdu_ber.h)                                        */
+/* BINDTOOL_HEADER_FILE_HASH(d1c3b7ae261ba6c7380b941f71068694)                     */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -23,23 +23,20 @@
 
 namespace py = pybind11;
 
-#include <gnuradio/backscatter/burst_frame_scaler.h>
+#include <gnuradio/backscatter/pdu_ber.h>
 // pydoc.h is automatically generated in the build directory
-#include <burst_frame_scaler_pydoc.h>
+#include <pdu_ber_pydoc.h>
 
-void bind_burst_frame_scaler(py::module& m)
+void bind_pdu_ber(py::module& m)
 {
 
-    using burst_frame_scaler = gr::backscatter::burst_frame_scaler;
+    using pdu_ber = gr::backscatter::pdu_ber;
 
 
-    py::class_<burst_frame_scaler,
-               gr::block,
-               gr::basic_block,
-               std::shared_ptr<burst_frame_scaler>>(
-        m, "burst_frame_scaler", D(burst_frame_scaler))
+    py::class_<pdu_ber, gr::block, gr::basic_block, std::shared_ptr<pdu_ber>>(
+        m, "pdu_ber", D(pdu_ber))
 
-        .def(py::init(&burst_frame_scaler::make), D(burst_frame_scaler, make))
+        .def(py::init(&pdu_ber::make), py::arg("payload"), D(pdu_ber, make))
 
 
         ;

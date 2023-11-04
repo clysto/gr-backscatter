@@ -1,0 +1,25 @@
+id: backscatter_pdu_ber
+label: PDU Ber
+category: '[Backscatter]'
+flags: [python]
+
+templates:
+  imports: from gnuradio import backscatter
+  make: backscatter.pdu_ber(${payload})
+
+parameters:
+- id: payload
+  label: Payload
+  dtype: int_vector
+
+inputs:
+  - domain: message
+    id: pdus
+    optional: true
+
+outputs:
+  - label: ber
+    domain: stream
+    dtype: float
+
+file_format: 1

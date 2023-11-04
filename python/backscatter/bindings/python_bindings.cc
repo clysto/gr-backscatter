@@ -23,8 +23,9 @@ namespace py = pybind11;
 // BINDING_FUNCTION_PROTOTYPES(
     void bind_power_detector(py::module& m);
     void bind_burst_frame_tagger(py::module& m);
-    void bind_burst_frame_scaler(py::module& m);
     void bind_bs_frame_decoder(py::module& m);
+    void bind_gate(py::module& m);
+    void bind_pdu_ber(py::module& m);
 // ) END BINDING_FUNCTION_PROTOTYPES
 
 
@@ -55,7 +56,8 @@ PYBIND11_MODULE(backscatter_python, m)
     // BINDING_FUNCTION_CALLS(
     bind_power_detector(m);
     bind_burst_frame_tagger(m);
-    bind_burst_frame_scaler(m);
     bind_bs_frame_decoder(m);
+    bind_gate(m);
+    bind_pdu_ber(m);
     // ) END BINDING_FUNCTION_CALLS
 }

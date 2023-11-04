@@ -5,10 +5,10 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
-
 install(FILES
     backscatter_power_detector.block.yml
     backscatter_burst_frame_tagger.block.yml
-    backscatter_burst_frame_scaler.block.yml
-    backscatter_bs_frame_decoder.block.yml DESTINATION share/gnuradio/grc/blocks
+    backscatter_bs_frame_decoder.block.yml
+    backscatter_gate.block.yml
+    backscatter_pdu_ber.block.yml DESTINATION share/gnuradio/grc/blocks
 )

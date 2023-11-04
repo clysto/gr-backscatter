@@ -15,7 +15,7 @@
  */
 
 
-static const char* __doc_gr_backscatter_burst_frame_scaler = R"doc()doc";
+static const char* __doc_gr_backscatter_pdu_ber = R"doc()doc";
 
 
-static const char* __doc_gr_backscatter_burst_frame_scaler_make = R"doc()doc";
+static const char* __doc_gr_backscatter_pdu_ber_make = R"doc()doc";

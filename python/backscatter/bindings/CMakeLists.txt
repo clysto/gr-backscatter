@@ -27,12 +27,12 @@ include(GrPybind)
 ########################################################################
 # Python Bindings
 ########################################################################
-
 list(APPEND backscatter_python_files
     power_detector_python.cc
     burst_frame_tagger_python.cc
-    burst_frame_scaler_python.cc
-    bs_frame_decoder_python.cc python_bindings.cc)
+    bs_frame_decoder_python.cc
+    gate_python.cc
+    pdu_ber_python.cc python_bindings.cc)
 
 GR_PYBIND_MAKE_OOT(backscatter
    ../../..
