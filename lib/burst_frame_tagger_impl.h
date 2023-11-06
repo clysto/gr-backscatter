@@ -19,6 +19,9 @@ private:
     float d_snr_threshoud;
     int d_look_ahead;
     int d_state;
+    float d_first_snr;
+    float d_last_snr;
+    int d_below_threshoud_count;
     pmt::pmt_t d_id;
 
 public:
