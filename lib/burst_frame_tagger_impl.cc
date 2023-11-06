@@ -60,6 +60,7 @@ int burst_frame_tagger_impl::work(int noutput_items,
             if (snr[i] > d_snr_threshoud) {
                 // exceed the threshold
                 d_state = 1;
+                d_start_find = true;
                 memcpy(out, signal, i * 4);
                 return i;
             }
@@ -75,11 +76,18 @@ int burst_frame_tagger_impl::work(int noutput_items,
         // early late gate
         d_first_snr = snr[0];
         d_last_snr = snr[d_look_ahead - 1];
+        // 不是一个上升沿, 是上一次峰值的下降沿
+        if (d_start_find && d_first_snr > d_last_snr) {
+            d_state = 0;
+            memcpy(out, signal, d_look_ahead * 4);
+            return d_look_ahead;
+        }
+        d_start_find = false;
         if (d_first_snr < d_last_snr) {
             // too early
             out[0] = signal[0];
             return 1;
-        } else if (d_state == 1) {
+        } else {
             float max_val = snr[0];
             int max_ind = 0;
             for (int i = 0; i < d_look_ahead; i++) {

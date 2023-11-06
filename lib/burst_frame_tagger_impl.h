@@ -23,6 +23,7 @@ private:
     float d_last_snr;
     int d_below_threshoud_count;
     pmt::pmt_t d_id;
+    bool d_start_find = false;
 
 public:
     burst_frame_tagger_impl(float snr_threshoud, int look_ahead);
