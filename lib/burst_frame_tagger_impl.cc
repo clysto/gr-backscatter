@@ -119,5 +119,10 @@ int burst_frame_tagger_impl::work(int noutput_items,
     return noutput_items;
 }
 
+void burst_frame_tagger_impl::set_snr_threshoud(float snr_threshoud)
+{
+    d_snr_threshoud = snr_threshoud;
+}
+
 } /* namespace backscatter */
 } /* namespace gr */

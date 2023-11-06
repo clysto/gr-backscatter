@@ -33,6 +33,9 @@ public:
      * creating new instances.
      */
     static sptr make(float snr_threshoud, int look_ahead);
+
+    //! \brief Set the threshold for the SNR.
+    virtual void set_snr_threshoud(float snr_threshoud) = 0;
 };
 
 } // namespace backscatter

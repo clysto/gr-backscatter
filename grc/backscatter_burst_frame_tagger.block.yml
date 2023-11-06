@@ -1,16 +1,13 @@
 id: backscatter_burst_frame_tagger
 label: Burst Frame Tagger
 category: '[Backscatter]'
-flags: [python, cpp]
+flags: [python]
 
 templates:
   imports: from gnuradio import backscatter
   make: backscatter.burst_frame_tagger(${snr_threshoud}, ${look_ahead})
-
-cpp_templates:
-  includes: ['#include <gnuradio/backscatter/burst_frame_tagger.h>']
-  declarations: 'backscatter::burst_frame_tagger::sptr ${id};'
-  make: 'this->${id} = backscatter::burst_frame_tagger::make(${snr_threshoud}, ${look_ahead});'
+  callbacks:
+    - set_snr_threshoud(${snr_threshoud})
 
 parameters:
   - id: snr_threshoud

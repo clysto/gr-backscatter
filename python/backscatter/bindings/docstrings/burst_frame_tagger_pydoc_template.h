@@ -19,3 +19,6 @@ static const char* __doc_gr_backscatter_burst_frame_tagger = R"doc()doc";
 
 
 static const char* __doc_gr_backscatter_burst_frame_tagger_make = R"doc()doc";
+
+
+static const char* __doc_gr_backscatter_burst_frame_tagger_set_snr_threshoud = R"doc()doc";

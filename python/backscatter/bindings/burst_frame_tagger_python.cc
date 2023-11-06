@@ -14,7 +14,7 @@
 /* BINDTOOL_GEN_AUTOMATIC(0)                                                       */
 /* BINDTOOL_USE_PYGCCXML(0)                                                        */
 /* BINDTOOL_HEADER_FILE(burst_frame_tagger.h)                                        */
-/* BINDTOOL_HEADER_FILE_HASH(c287901248d0bbb4503052984aaca10d)                     */
+/* BINDTOOL_HEADER_FILE_HASH(f3c17177432fcd01e7f14cf541c50fa9)                     */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -44,6 +44,10 @@ void bind_burst_frame_tagger(py::module& m)
              py::arg("look_ahead"),
              D(burst_frame_tagger, make))
 
+        .def("set_snr_threshoud",
+             &burst_frame_tagger::set_snr_threshoud,
+             py::arg("snr_threshoud"),
+             D(burst_frame_tagger, set_snr_threshoud))
 
         ;
 }
