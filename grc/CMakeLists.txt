@@ -10,5 +10,6 @@ install(FILES
     backscatter_burst_frame_tagger.block.yml
     backscatter_bs_frame_decoder.block.yml
     backscatter_gate.block.yml
-    backscatter_pdu_ber.block.yml DESTINATION share/gnuradio/grc/blocks
+    backscatter_pdu_ber.block.yml
+    backscatter_pdu_rate.block.yml DESTINATION share/gnuradio/grc/blocks
 )

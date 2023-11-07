@@ -1,0 +1,27 @@
+id: backscatter_pdu_rate
+label: pdu_rate
+category: '[Backscatter]'
+flags: [python]
+
+
+templates:
+  imports: from gnuradio import backscatter
+  make: backscatter.pdu_rate(${update_rate_ms})
+
+parameters:
+- id: update_rate_ms
+  label: Min Update Time (ms):
+  dtype: float
+  default: "1000"
+
+inputs:
+  - domain: message
+    id: pdus
+    optional: true
+
+outputs:
+  - label: rate
+    domain: stream
+    dtype: float
+
+file_format: 1

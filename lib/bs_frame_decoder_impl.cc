@@ -108,11 +108,11 @@ int bs_frame_decoder_impl::work(int noutput_items,
     unsigned int bit;
 
     while (index < noutput_items) {
-        if (idx.count(index)) {
-            enter_sync_search();
-        }
         switch (d_state) {
         case STATE_FRAME_SEARCH:
+            if (idx.count(index)) {
+                enter_sync_search();
+            }
             index++;
             break;
         case STATE_SYNC_SEARCH:

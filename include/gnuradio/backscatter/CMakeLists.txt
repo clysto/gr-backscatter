@@ -15,5 +15,6 @@ install(FILES
     burst_frame_tagger.h
     bs_frame_decoder.h
     gate.h
-    pdu_ber.h DESTINATION include/gnuradio/backscatter
+    pdu_ber.h
+    pdu_rate.h DESTINATION include/gnuradio/backscatter
 )

@@ -32,7 +32,8 @@ list(APPEND backscatter_python_files
     burst_frame_tagger_python.cc
     bs_frame_decoder_python.cc
     gate_python.cc
-    pdu_ber_python.cc python_bindings.cc)
+    pdu_ber_python.cc
+    pdu_rate_python.cc python_bindings.cc)
 
 GR_PYBIND_MAKE_OOT(backscatter
    ../../..

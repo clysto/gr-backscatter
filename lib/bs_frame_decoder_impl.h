@@ -43,6 +43,7 @@ private:
     uint8_t d_payload_byte;
     unsigned int d_payload_bit;
     std::vector<uint8_t> d_payload;
+    // unsigned int d_syncword_max_search_samples;
 
     void enter_sync_search();
     void enter_header_decode();
