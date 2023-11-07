@@ -49,16 +49,16 @@ int gate_impl::general_work(int noutput_items,
     auto out = static_cast<float*>(output_items[0]);
 
     std::vector<tag_t> tags;
-    get_tags_in_range(tags,
-                      0,
-                      nitems_read(0),
-                      nitems_read(0) + ninput_items[0],
-                      pmt::string_to_symbol("frame_start"));
+
     if (d_expected <= 0) {
         d_have_sync = false;
         d_expected = d_max_samples;
     }
     if (d_have_sync) {
+        get_tags_in_range(tags,
+                    0,
+                    nitems_read(0),
+                    nitems_read(0) + ninput_items[0]);
         int ncp = std::min(noutput_items, ninput_items[0]);
         ncp = std::min(ncp, d_expected);
         for (int i = 0; i < ncp; i++) {
@@ -68,6 +68,8 @@ int gate_impl::general_work(int noutput_items,
             gr::tag_t t = tags[i];
             if (t.offset >= nitems_read(0) + ncp)
                 continue;
+            // if (t.key == pmt::string_to_symbol("frame_start"))
+            //     continue;
             int offset = (nitems_read(0) - nitems_written(0));
             t.offset -= offset;
             add_item_tag(0, t);
@@ -76,6 +78,11 @@ int gate_impl::general_work(int noutput_items,
         consume_each(ncp);
         return ncp;
     } else {
+        get_tags_in_range(tags,
+                    0,
+                    nitems_read(0),
+                    nitems_read(0) + ninput_items[0],
+                    pmt::string_to_symbol("frame_start"));
         if (!tags.empty()) {
             d_have_sync = true;
             consume_each(tags[0].offset - nitems_read(0));
