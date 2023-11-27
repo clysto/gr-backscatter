@@ -16,5 +16,5 @@ install(FILES
     bs_frame_decoder.h
     gate.h
     pdu_ber.h
-    pdu_rate.h DESTINATION include/gnuradio/backscatter
+    DESTINATION include/gnuradio/backscatter
 )

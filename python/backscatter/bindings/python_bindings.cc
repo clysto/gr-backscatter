@@ -26,7 +26,6 @@ namespace py = pybind11;
     void bind_bs_frame_decoder(py::module& m);
     void bind_gate(py::module& m);
     void bind_pdu_ber(py::module& m);
-    void bind_pdu_rate(py::module& m);
 // ) END BINDING_FUNCTION_PROTOTYPES
 
 
@@ -60,6 +59,5 @@ PYBIND11_MODULE(backscatter_python, m)
     bind_bs_frame_decoder(m);
     bind_gate(m);
     bind_pdu_ber(m);
-    bind_pdu_rate(m);
     // ) END BINDING_FUNCTION_CALLS
 }
