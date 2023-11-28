@@ -14,6 +14,7 @@
 #include <algorithm>
 #include <cstdint>
 #include <string>
+#include <set>
 
 namespace gr {
 namespace backscatter {
