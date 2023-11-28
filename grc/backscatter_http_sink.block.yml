@@ -1,0 +1,24 @@
+id: backscatter_http_sink
+label: HTTP Sink
+category: '[Backscatter]'
+flags: [python]
+
+templates:
+  imports: from gnuradio import backscatter
+  make: backscatter.http_sink(${host}, int(${port}))
+
+parameters:
+  - id: host
+    label: Host
+    dtype: string
+  - id: port
+    label: Port
+    dtype: string
+    default: '52001'
+
+inputs:
+  - domain: message
+    id: pdus
+    optional: true
+
+file_format: 1
