@@ -1,0 +1,38 @@
+id: blocks_multiply_by_tag_value_ff
+label: Multiply by Tag Value
+category: '[Backscatter]'
+flags: [ python, cpp ]
+
+
+templates:
+  imports: from gnuradio import backscatter
+  make: backscatter.multiply_by_tag_value_ff()
+
+parameters:
+-   id: tagname
+    label: Tag Name
+    dtype: string
+-   id: vlen
+    label: Vector Length
+    dtype: int
+    default: '1'
+
+inputs:
+-   domain: stream
+    dtype: float
+
+outputs:
+-   domain: stream
+    dtype: float
+
+
+templates:
+    imports: from gnuradio import backscatter
+    make: backscatter.multiply_by_tag_value_ff(${tagname}, ${vlen})
+
+cpp_templates:
+    includes: ['#include <gnuradio/backscatter/multiply_by_tag_value_ff.h>']
+    declarations: 'backscatter::multiply_by_tag_value_ff::sptr ${id};'
+    make: 'this->${id} = backscatter::multiply_by_tag_value_ff::make(${tagname}, ${vlen});'
+
+file_format: 1

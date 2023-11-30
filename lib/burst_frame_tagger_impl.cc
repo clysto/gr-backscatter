@@ -99,7 +99,17 @@ int burst_frame_tagger_impl::work(int noutput_items,
             add_item_tag(0,
                          nitems_written(0) + max_ind,
                          pmt::intern("frame_start"),
-                         pmt::from_float(power[max_ind]),
+                         pmt::from_bool(true),
+                         d_id);
+            add_item_tag(0,
+                         nitems_written(0) + max_ind,
+                         pmt::intern("time_est"),
+                         pmt::from_double(0),
+                         d_id);
+            add_item_tag(0,
+                         nitems_written(0) + max_ind,
+                         pmt::intern("amp_est"),
+                         pmt::from_double(1 / power[max_ind]),
                          d_id);
             memcpy(out, signal, d_look_ahead * 4);
             d_below_threshoud_count = 0;

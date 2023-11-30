@@ -16,7 +16,7 @@ list(APPEND backscatter_sources
     bs_frame_decoder_impl.cc
     gate_impl.cc
     pdu_ber_impl.cc
-    )
+    multiply_by_tag_value_ff_impl.cc )
 
 set(backscatter_sources "${backscatter_sources}" PARENT_SCOPE)
 if(NOT backscatter_sources)
