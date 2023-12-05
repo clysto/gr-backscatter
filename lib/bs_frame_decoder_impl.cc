@@ -13,8 +13,8 @@
 #include <volk/volk.h>
 #include <algorithm>
 #include <cstdint>
-#include <string>
 #include <set>
+#include <string>
 
 namespace gr {
 namespace backscatter {
@@ -148,8 +148,11 @@ int bs_frame_decoder_impl::work(int noutput_items,
             if (d_hdr_count < 64) {
                 continue;
             }
+#ifdef _MSC_VER
+            d_hdr = _byteswap_ulong(d_hdr);
+#else
             d_hdr = __builtin_bswap32(d_hdr);
-            // limit the payload size to 1500 bytes
+#endif
             d_hdr = std::min(d_hdr, d_pdu_max_len);
             enter_payload_decode();
             break;
