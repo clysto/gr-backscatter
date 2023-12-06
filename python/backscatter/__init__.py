@@ -20,5 +20,5 @@ except ModuleNotFoundError:
     pass
 
 # import any pure python here
-from .http_sink import http_sink
+
 #

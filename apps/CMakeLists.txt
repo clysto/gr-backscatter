@@ -10,5 +10,6 @@ include(GrPython)
 
 GR_PYTHON_INSTALL(
     PROGRAMS
+    recvpdus
     DESTINATION bin
 )

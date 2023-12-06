@@ -22,7 +22,7 @@ add_subdirectory(bindings)
 GR_PYTHON_INSTALL(
     FILES
     __init__.py
-    http_sink.py DESTINATION ${GR_PYTHON_DIR}/gnuradio/backscatter
+    DESTINATION ${GR_PYTHON_DIR}/gnuradio/backscatter
 )
 
 ########################################################################
