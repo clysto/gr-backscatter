@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+
+
+import socket
+import sys
+from typing import Callable
+
+
+def hexdump(bytes_input, width=16, header=""):
+    header_offset = 6 - len(header)
+    current = 0
+    end = len(bytes_input)
+    result = (
+        "╭─┐%s┌─" % header
+        + "─" * (3 * width + header_offset)
+        + "┬─"
+        + "─" * width
+        + "─╮\n"
+    )
+    while current < end:
+        result += "│%08x  " % current
+        byte_slice = bytes_input[current : current + width]
+        for b in byte_slice:
+            result += "%02x " % b
+        for _ in range(width - len(byte_slice)):
+            result += " " * 3
+        result += "│ "
+        for b in byte_slice:
+            if (b >= 32) and (b < 127):
+                result += chr(b)
+            else:
+                result += "."
+        for _ in range(width - len(byte_slice)):
+            result += " "
+        result += " │\n"
+        current += width
+    result += "╰──────────" + "─" * 3 * width + "┴─" + "─" * width + "─╯"
+    return result
+
+
+def recvpdus(host, port, npdus, filter=None):
+    pdus = []
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((host, port))
+        s.sendall(b" ")
+        count = 0
+        while count < npdus:
+            data = s.recv(1024)
+            if isinstance(filter, Callable):
+                if filter(data):
+                    pdus.append(data)
+                    count += 1
+            else:
+                pdus.append(data)
+                count += 1
+    return pdus
+
+
+def main():
+    n = 1
+    if len(sys.argv) > 1:
+        n = int(sys.argv[1])
+    index = 0
+
+    def log(data):
+        nonlocal index
+        print(hexdump(data, header=f"PDU {index}"))
+        index += 1
+        return True
+
+    recvpdus("127.0.0.1", 52001, n, log)
+
+
+if __name__ == "__main__":
+    main()
